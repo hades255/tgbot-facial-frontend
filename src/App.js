@@ -1,5 +1,4 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect, useState, Suspense } from "react";
 import { Provider } from "react-redux";
 
 import store from "./redux/store";
@@ -7,8 +6,8 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { SoundProvider } from "./contexts/SoundContext";
 import "./App.css";
 import Init from "./components/init";
-
-const Home = lazy(() => import("./pages/Home"));
+import Router from "./router";
+import ToastContainer from "./components/common/toast";
 
 function App() {
   const [str, setStr] = useState(null);
@@ -26,11 +25,10 @@ function App() {
       <AuthProvider>
         <SoundProvider>
           <Suspense fallback={<div className=""></div>}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Init params={str} />
-            </Routes>
+            <Router />
           </Suspense>
+          <Init params={str} />
+          <ToastContainer />
         </SoundProvider>
       </AuthProvider>
     </Provider>

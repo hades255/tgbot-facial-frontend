@@ -1,17 +1,16 @@
 import React, { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-import { login } from "../../redux/authSlice";
-import { useAuth } from "../../contexts/AuthContext";
+import { login, selectIsAuthenticated } from "../../redux/authSlice";
 import { BACKEND_PATH } from "../../constants/config";
 import { queryStringToObject } from "../../helper/func";
 
 const Init = ({ params }) => {
   const location = useLocation();
   const dispatch = useDispatch();
-  const { isAuthenticated } = useAuth();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
 
   const queryParams = useMemo(
     () => new URLSearchParams(location.search),
