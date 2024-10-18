@@ -22,8 +22,8 @@ const BonusByRefer = () => {
 
   return (
     <>
-      <div className="text-[#9E9E9E] text-sm">
-        You've earned <span className="font-semibold">{totalBonus} pts</span> from
+      <div className="text-white text-sm">
+        You've earned <span className="font-semibold">{totalBonus} $SELFIE</span> from
         your friends.
       </div>
     </>

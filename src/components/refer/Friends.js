@@ -29,13 +29,13 @@ const Friends = () => {
   }, [users, userId]);
 
   return (
-    <div className="flex flex-col border rounded p-1">
+    <div className="flex flex-col border rounded p-1 bg-gray-500">
       <div className="min-h-44 flex flex-col">
         <div className="flex justify-between mx-3">
           <span className="text-slate-500 text-sm">
             {(users.length || 0).toLocaleString()} Refers
           </span>
-          <span className="text-slate-500 text-sm">Total pts earned</span>
+          <span className="text-slate-500 text-sm">Total $SELFIE earned</span>
         </div>
         <div className="flex flex-col pt-2">
           {rank !== null && rank > 10 && (
@@ -50,7 +50,7 @@ const Friends = () => {
               </div>
               <div className="flex">
                 <span className="text-sm backdrop-blur-lg text-slate-400">
-                  🚀 {point.toLocaleString()} pts
+                  {point.toLocaleString()} $SELFIE
                 </span>
               </div>
             </div>
@@ -80,7 +80,7 @@ const Friends = () => {
                   </div>
                 </div>
                 <div className="text-sm backdrop-blur-lg text-slate-400">
-                  🚀 {Math.round(item.point).toLocaleString()} pts
+                  🚀 {Math.round(item.point).toLocaleString()} $SELFIE
                 </div>
               </div>
             ))
