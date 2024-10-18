@@ -1,13 +1,18 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { useAuth } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { BackButton } from "@telegram-apps/sdk";
+import BackButton from "../../components/common/BackButton";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../redux/authSlice";
+import axios from "axios";
+import { BACKEND_PATH } from "../../constants/config";
 
 const ConfirmEmail = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const { confirmemail } = useAuth();
+  const { confirmemail, userId } = useAuth();
   const [count, setCount] = useState(120);
   const [reload, setReload] = useState(false);
 
@@ -34,8 +39,27 @@ const ConfirmEmail = () => {
 
   const handleSendagain = useCallback(() => {
     setCount(120);
+    setReload(false);
   }, []);
 
+  const handleSignin = useCallback(() => {
+    (async () => {
+      try {
+        await axios.post(`${BACKEND_PATH}/user/email?userId=${userId}`, {
+          email: confirmemail,
+        });
+        dispatch(
+          updateUser([
+            { key: "email", value: confirmemail },
+            { key: "isAuthenticated", value: true },
+          ])
+        );
+        navigate("/face-upload");
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [navigate, dispatch, confirmemail, userId]);
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">
@@ -52,14 +76,27 @@ const ConfirmEmail = () => {
           Check your <b className="mx-1">{confirmemail}</b> inbox
         </div>
         <div className="flex justify-center gap-2">
-          <input className="border w-10" maxLength={1} />
-          <input className="border w-10" maxLength={1} />
-          <input className="border w-10" maxLength={1} />
-          <input className="border w-10" maxLength={1} />
+          <input className="border w-10" maxLength={1} disabled={reload} />
+          <input className="border w-10" maxLength={1} disabled={reload} />
+          <input className="border w-10" maxLength={1} disabled={reload} />
+          <input className="border w-10" maxLength={1} disabled={reload} />
         </div>
         <div className="flex justify-between">
           <BackButton />
-          {reload && <button onClick={handleSendagain}>Send again</button>}
+          <div className="flex gap-2">
+            {reload && (
+              <button className="px-1 border" onClick={handleSendagain}>
+                Send again
+              </button>
+            )}
+            <button
+              disabled={reload}
+              className="px-1 border"
+              onClick={handleSignin}
+            >
+              Sign in
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,13 +1,12 @@
 import React, { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-
-import Signin from "../pages/auth/Signin";
-import ConfirmEmail from "../pages/auth/ConfirmEmail";
-import FaceUpload from "../pages/face/Upload";
-import Refer from "../pages/Refer";
 import WithAuth from "../components/layouts/WithAuth";
+
 const Home = lazy(() => import("../pages/Home"));
+const Refer = lazy(() => import("../pages/Refer"));
+const Signin = lazy(() => import("../pages/auth/Signin"));
+const ConfirmEmail = lazy(() => import("../pages/auth/ConfirmEmail"));
+const FaceUpload = lazy(() => import("../pages/face/Upload"));
 
 const Router = () => {
   return (

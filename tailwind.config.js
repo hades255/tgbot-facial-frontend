@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       keyframes: {
         "image-check": {
-          "0%, 100%": { transform: "translate(0)", opacity: 0.8 },
-          "50%": { transform: "translateY(100%)", opacity: 0.8 },
+          "0%, 100%": { transform: "translate(0)", opacity: 0.1 },
+          "50%": { transform: "translateY(100%)", opacity: 0.1 },
         },
         toastIn: {
           "0%": { opacity: 0 },

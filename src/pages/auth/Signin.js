@@ -2,12 +2,14 @@ import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../redux/authSlice";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Signin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { email } = useAuth();
 
-  const [email, setEmail] = useState("montgasam@gmail.com");
+  const [email_, setEmail] = useState("montgasam@gmail.com");
 
   const handleChangeEmailInput = useCallback(
     ({ target: { value } }) => setEmail(value),
@@ -17,11 +19,14 @@ const Signin = () => {
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(updateUser([{ key: "confirmemail", value: email }]));
-      // navigate("/email-confirm");
-      navigate("/face-upload");
+      if (email && email === email_) {
+        navigate("/face-upload");
+        return;
+      }
+      dispatch(updateUser([{ key: "confirmemail", value: email_ }]));
+      navigate("/email-confirm");
     },
-    [navigate, dispatch, email]
+    [navigate, dispatch, email_, email]
   );
 
   return (
@@ -37,7 +42,7 @@ const Signin = () => {
             className="border w-full"
             type="email"
             placeholder="Email"
-            value={email}
+            value={email_}
             onChange={handleChangeEmailInput}
           />
           <button type="submit" className="w-full border">

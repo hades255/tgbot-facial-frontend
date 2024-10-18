@@ -10,6 +10,8 @@ const authSlice = createSlice({
     username: "",
     avatar: "",
     confirmemail: "",
+    point: 0,
+    token: 0,
   },
   reducers: {
     login: (state, payload) => {
@@ -18,10 +20,13 @@ const authSlice = createSlice({
       state.email = payload.payload.email;
       state.username = payload.payload.username;
       state.avatar = payload.payload.avatar;
+      state.point = payload.payload.point;
+      state.token = payload.payload.token;
       state.isAuthenticated = true;
     },
     logout: (state) => {
       state.isAuthenticated = false;
+      state.confirmemail = "";
     },
     updateUser: (state, payload) => {
       payload.payload.forEach((item) => {
