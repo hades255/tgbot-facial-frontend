@@ -24,7 +24,7 @@ function App() {
     });
 
     const updateBackButtonVisibility = () => {
-      if (location.pathname === "/") {
+      if (location.pathname === "/signin") {
         backButton.hide();
       } else {
         backButton.show();

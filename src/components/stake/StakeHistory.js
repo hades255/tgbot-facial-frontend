@@ -130,7 +130,7 @@ const StakeItem = ({ stake, cancel, onCancel, showC }) => {
       <div className="min-w-20 w-20 text-gray-300 text-sm capitalize font-bold flex justify-end">
         {STAKE_STATUS[stake.status]}
       </div>
-      {cancel && stake.status !== 4 && (
+      {cancel || stake.status !== 4 && (
         <div
           className="absolute bottom-0 right-0 cursor-pointer"
           onClick={handleClick}
