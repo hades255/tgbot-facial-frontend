@@ -73,14 +73,16 @@ const StakeHistory = ({
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex justify-end">
-        <button
-          className="text-sm text-white underline"
-          onClick={handleShowCanceled}
-        >
-          {showC ? "Hide" : "Show"} Canceled Stakes
-        </button>
-      </div>
+      {cancel && (
+        <div className="flex justify-end">
+          <button
+            className="text-sm text-white underline"
+            onClick={handleShowCanceled}
+          >
+            {showC ? "Hide" : "Show"} Canceled Stakes
+          </button>
+        </div>
+      )}
       {stakes && stakes.length ? (
         stakes.map((item, index) => (
           <StakeItem
@@ -130,7 +132,7 @@ const StakeItem = ({ stake, cancel, onCancel, showC }) => {
       <div className="min-w-20 w-20 text-gray-300 text-sm capitalize font-bold flex justify-end">
         {STAKE_STATUS[stake.status]}
       </div>
-      {cancel || stake.status !== 4 && (
+      {cancel && stake.status !== 4 && (
         <div
           className="absolute bottom-0 right-0 cursor-pointer"
           onClick={handleClick}
