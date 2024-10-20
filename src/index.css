@@ -11,6 +11,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   background-color: #1f435185;
+  /* background-image: radial-gradient(circle at 10% 20%, #1f435185 42%, #07172E 93.6%); */
+  background-image: radial-gradient( circle 750px at 113.6% 51.7%,  #1f435185 0%, rgba(0,56,68,1) 51.5%, #1f435185 88.6% );
 }
 
 code {

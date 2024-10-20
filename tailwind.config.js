@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "custom-gradient":
+          "linear-gradient(109.6deg, rgba(0,56,68,1) 11.2%, #1f4351E5 42%, #07172EE5 71.5%, rgba(0,56,68,1) 100.2%)",
+      },
       keyframes: {
         "image-check": {
           "0%, 100%": { transform: "translate(0)", opacity: 0.1 },
