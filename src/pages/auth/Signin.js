@@ -28,9 +28,9 @@ const Signin = () => {
       }
       (async () => {
         try {
-          await axios.post(`${BACKEND_PATH}/user/email?userId=${userId}`, {
-            email: email_,
-          });
+          // await axios.post(`${BACKEND_PATH}/user/email?userId=${userId}`, {
+          //   email: email_,
+          // });
           dispatch(
             addToast({
               message: `Verification code sent to ${email_}!`,
