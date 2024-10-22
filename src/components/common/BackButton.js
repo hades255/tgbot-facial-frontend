@@ -5,9 +5,14 @@ const BackButton = ({ title = "Back", classnames = "" }) => {
   const handleBack = useCallback(() => window.history.back(), []);
 
   return (
-    <button onClick={handleBack} className={classNames("border rounded px-2 text-white font-bold", classnames)}>
-      {title}
-    </button>
+    <button
+      onClick={handleBack}
+      className={classNames(
+        "border rounded px-2 text-white font-bold",
+        classnames
+      )}
+      dangerouslySetInnerHTML={{ __html: title }}
+    ></button>
   );
 };
 

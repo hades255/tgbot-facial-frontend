@@ -7,6 +7,8 @@ module.exports = {
         "custom-gradient":
           "linear-gradient(109.6deg, rgba(0,56,68,1) 11.2%, #1f4351E5 42%, #07172EE5 71.5%, rgba(0,56,68,1) 100.2%)",
         "progress-bar": "linear-gradient(to right, #04C3FF, #79DEFE, #79DEFF)",
+        "notify-item": "linear-gradient(to top, #A0C3C3A0, #79DEFE20, #79DEFF00)",
+        "notify-new-item": "linear-gradient(to top, #04C3FFA0, #79DEFE20, #79DEFF80)",
       },
       keyframes: {
         "image-check": {

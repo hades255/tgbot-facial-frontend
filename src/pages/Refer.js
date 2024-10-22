@@ -3,13 +3,10 @@ import BonusByRefer from "../components/refer/BonusByRefer";
 import InviteButton from "../components/refer/InviteButton";
 import CopyBtn from "../components/refer/CopyBtn";
 import Friends from "../components/refer/Friends";
-import Navbar from "../components/navbar";
-import Header from "../components/header";
 
 const Refer = () => {
   return (
     <>
-      <Header />
       <div className="p-8 flex flex-col gap-2">
         <BonusByRefer />
         <div className="flex justify-center gap-2">
@@ -18,7 +15,6 @@ const Refer = () => {
         </div>
         <Friends />
       </div>
-      <Navbar />
     </>
   );
 };

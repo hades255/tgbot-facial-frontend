@@ -30,7 +30,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex flex-col items-center">
-          {user.point >= 1000 ? (
+          {user.point >= 100 ? (
             <>
               <div className="flex flex-col items-center text-sm text-gray-300 font-semibold">
                 <div>
@@ -58,15 +58,15 @@ const Profile = () => {
               <div className="flex flex-col items-center text-sm text-gray-300 font-semibold">
                 <div>
                   Need
-                  <span className="font-bold mx-1">{1000 - user.point}</span>
+                  <span className="font-bold mx-1">{100 - user.point}</span>
                   $SELFIEs
                 </div>
                 <div>to convert available</div>
               </div>
               <div className="w-40 bg-white h-4 rounded-lg relative p-[2px]">
                 <div
-                  className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg"
-                  style={{ width: (156 * user.point) / 1000 }}
+                  className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg -z-0"
+                  style={{ width: (156 * user.point) / 100 }}
                 ></div>
               </div>
             </>

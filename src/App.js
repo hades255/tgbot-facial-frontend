@@ -10,6 +10,8 @@ import "./App.css";
 import Init from "./components/init";
 import Router from "./router";
 import ToastContainer from "./components/common/toast";
+import Header from "./components/header";
+import Navbar from "./components/navbar";
 
 function App() {
   const location = useLocation();
@@ -50,9 +52,11 @@ function App() {
     <Provider store={store}>
       <AuthProvider>
         <SoundProvider>
+          <Header />
           <Suspense fallback={<div className=""></div>}>
             <Router />
           </Suspense>
+          <Navbar />
           <Init params={str} />
           <ToastContainer />
         </SoundProvider>

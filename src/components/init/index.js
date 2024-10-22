@@ -6,6 +6,7 @@ import axios from "axios";
 import { login, selectIsAuthenticated } from "../../redux/authSlice";
 import { BACKEND_PATH } from "../../constants/config";
 import { queryStringToObject } from "../../helper/func";
+import NewNotificationTimer from "./NewNotificationTimer";
 
 const Init = ({ params }) => {
   const location = useLocation();
@@ -45,7 +46,11 @@ const Init = ({ params }) => {
     }
   }, [queryParams, params, params_, dispatch, isAuthenticated]);
 
-  return <></>;
+  return (
+    <>
+      <NewNotificationTimer />
+    </>
+  );
 };
 
 export default Init;

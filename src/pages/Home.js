@@ -6,14 +6,11 @@ import Friends from "../components/home/Friends";
 import { Link } from "react-router-dom";
 import Convertistory from "../components/convert/Convertistory";
 import StakeHistory from "../components/stake/StakeHistory";
-import Navbar from "../components/navbar";
 import Profile from "../components/home/Header";
-import Header from "../components/header";
 
 const Home = () => {
   return (
     <>
-      <Header />
       <div>
         <Profile />
         <div className="bg-[#F2FAFA] flex flex-col gap-2 rounded-t-[16px] px-4 pt-8 pb-24">
@@ -91,7 +88,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Navbar />
     </>
   );
 };

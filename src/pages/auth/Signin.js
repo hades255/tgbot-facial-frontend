@@ -23,6 +23,11 @@ const Signin = () => {
     (e) => {
       e.preventDefault();
       if (email && email === email_) {
+        dispatch(
+          updateUser([
+            { key: "isAuthenticated", value: true },
+          ])
+        );
         navigate("/face-upload");
         return;
       }

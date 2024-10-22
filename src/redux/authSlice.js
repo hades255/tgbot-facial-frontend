@@ -22,7 +22,7 @@ const authSlice = createSlice({
       state.avatar = payload.payload.avatar;
       state.point = payload.payload.point;
       state.token = payload.payload.token;
-      state.isAuthenticated = true;
+      state.confirmemail = "";
     },
     logout: (state) => {
       state.isAuthenticated = false;

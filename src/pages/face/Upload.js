@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../redux/authSlice";
-import Header from "../../components/header";
 
 const FaceUpload = () => {
   const navigate = useNavigate();
@@ -67,7 +66,6 @@ const FaceUpload = () => {
 
   return (
     <>
-      <Header />
       <div className="h-[calc(100vh_-_200px)] w-screen flex justify-center items-center px-8">
         <div className="flex flex-col gap-2">
           <Dropzone onDrop={onDrop}>

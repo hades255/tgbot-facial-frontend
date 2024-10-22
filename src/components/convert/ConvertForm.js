@@ -31,6 +31,10 @@ const ConvertForm = ({ refreshHistory }) => {
         ? 0.05
         : input >= 1500
         ? 0.04
+        : input >= 1000
+        ? 0.03
+        : input >= 500
+        ? 0.02
         : 0.01,
     [input]
   );
@@ -100,7 +104,8 @@ const ConvertForm = ({ refreshHistory }) => {
             disabled={user.point < 100}
             type="number"
             step={100}
-            min={1000}
+            min={100}
+            max={user.point}
             className="w-full py-1 ps-4 pe-10 rounded"
             name="convert"
             value={input}
@@ -132,7 +137,7 @@ const ConvertForm = ({ refreshHistory }) => {
             Convert
           </button>
           <div className="flex items-center text-xs font-semibold text-red-300">
-            get {profit * 100}% profits
+            will get {profit * 100}% profits
             <FontAwesomeIcon
               icon={faQuestionCircle}
               className="px-1 cursor-pointer"

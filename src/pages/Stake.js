@@ -2,8 +2,6 @@ import React, { useCallback, useState } from "react";
 import StakeForm from "../components/stake/StakeForm";
 import StakeHistory from "../components/stake/StakeHistory";
 import { useAuth } from "../contexts/AuthContext";
-import Navbar from "../components/navbar";
-import Header from "../components/header";
 
 const Stake = () => {
   const { point, token } = useAuth();
@@ -15,7 +13,6 @@ const Stake = () => {
 
   return (
     <>
-      <Header />
       <div className="p-8 flex flex-col gap-2">
         <div className="flex gap-2">
           <div className="w-1/2 bg-[#FFFFFF50] rounded-lg p-4 shadow-inner flex flex-col gap-2">
@@ -27,7 +24,7 @@ const Stake = () => {
             </div>
             <div className="w-32 bg-white h-4 rounded-lg relative p-[2px]">
               <div
-                className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg text-[11px] flex justify-center items-center font-bold text-white"
+                className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg -z-0 text-[11px] flex justify-center items-center font-bold text-white"
                 style={{ width: (124 * (point >= 2000 ? 2000 : point)) / 2000 }}
               >
                 {point >= 2000 && "Stake Available"}
@@ -49,7 +46,7 @@ const Stake = () => {
             </div>
             <div className="w-32 bg-white h-4 rounded-lg relative p-[2px]">
               <div
-                className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg text-[11px] flex justify-center items-center font-bold text-white"
+                className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg -z-0 text-[11px] flex justify-center items-center font-bold text-white"
                 style={{ width: (124 * (token >= 20 ? 20 : token)) / 20 }}
               >
                 {token >= 20 && "Stake Available"}
@@ -73,7 +70,6 @@ const Stake = () => {
           />
         </div>
       </div>
-      <Navbar />
     </>
   );
 };
