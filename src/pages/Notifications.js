@@ -23,7 +23,7 @@ const Notifications = () => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [userId]);
 
   return (
     <>
