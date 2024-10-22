@@ -11,7 +11,7 @@ const Convert = () => {
 
   return (
     <>
-      <div className="px-4 py-8 flex flex-col gap-4">
+      <div className="px-4 pt-8 pb-24 flex flex-col gap-4">
         <ConvertForm refreshHistory={handleRefreshHistory} />
         <div className="border p-8 rounded-lg">
           <Convertistory

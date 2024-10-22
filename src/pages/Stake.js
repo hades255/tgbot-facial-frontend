@@ -13,7 +13,7 @@ const Stake = () => {
 
   return (
     <>
-      <div className="p-8 flex flex-col gap-2">
+      <div className="p-8 pb-24 flex flex-col gap-2">
         <div className="flex gap-2">
           <div className="w-1/2 bg-[#FFFFFF50] rounded-lg p-4 shadow-inner flex flex-col gap-2">
             <div className="flex justify-center items-baseline gap-2">
