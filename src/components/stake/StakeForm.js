@@ -18,7 +18,7 @@ const StakeForm = ({ refreshHistory }) => {
 
   const handleSelectChange = useCallback(({ target: { value } }) => {
     setSelectedOption(Number(value));
-    setMinValue(Number(value) === 1 ? 20 : 2000);
+    setMinValue(Number(value) === 1 ? 2 : 50);
     setInput(0);
   }, []);
 
@@ -39,13 +39,13 @@ const StakeForm = ({ refreshHistory }) => {
   const profit = useMemo(() => {
     const _input = input * (selectedOption === 1 ? 100 : 1);
     const a =
-      _input >= 10000
+      _input >= 1000
         ? 0.15
-        : _input >= 5000
+        : _input >= 500
         ? 0.08
-        : _input >= 4000
+        : _input >= 400
         ? 0.05
-        : _input >= 3000
+        : _input >= 300
         ? 0.04
         : 0.01;
     const diff = moment(date).diff(moment(), "days");

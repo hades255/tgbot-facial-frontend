@@ -7,6 +7,7 @@ import { BACKEND_PATH } from "../../constants/config";
 import { addToast } from "../../redux/toastSlice";
 import { updateUser } from "../../redux/authSlice";
 import { useAuth } from "../../contexts/AuthContext";
+import { MIN_CONVERT_LIMIT } from "../../constants/constants";
 
 const ConvertForm = ({ refreshHistory }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const ConvertForm = ({ refreshHistory }) => {
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      if (input > user.point || input < 100) {
+      if (input > user.point || input < MIN_CONVERT_LIMIT) {
         dispatch(
           addToast({
             message: `Invalid valance.`,
@@ -101,10 +102,10 @@ const ConvertForm = ({ refreshHistory }) => {
         </div>
         <div className="relative w-full">
           <input
-            disabled={user.point < 100}
+            disabled={user.point < MIN_CONVERT_LIMIT}
             type="number"
             step={100}
-            min={100}
+            min={MIN_CONVERT_LIMIT}
             max={user.point}
             className="w-full py-1 ps-4 pe-10 rounded"
             name="convert"

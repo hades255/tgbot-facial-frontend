@@ -6,5 +6,5 @@ export const STAKE_STATUS = [
   "canceled",
 ];
 
-export const MIN_CONVERT_LIMIT = 1000;
-export const MIN_STAKING_LIMIT = 2000;
+export const MIN_CONVERT_LIMIT = 100;
+export const MIN_STAKING_LIMIT = 50;

@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { formatNumber } from "../../helper/func";
 import { Link } from "react-router-dom";
+import { MIN_CONVERT_LIMIT } from "../../constants/constants";
 
 const Profile = () => {
   const user = useAuth();
@@ -30,7 +31,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex flex-col items-center">
-          {user.point >= 100 ? (
+          {user.point >= MIN_CONVERT_LIMIT ? (
             <>
               <div className="flex flex-col items-center text-sm text-gray-300 font-semibold">
                 <div>
@@ -58,7 +59,9 @@ const Profile = () => {
               <div className="flex flex-col items-center text-sm text-gray-300 font-semibold">
                 <div>
                   Need
-                  <span className="font-bold mx-1">{100 - user.point}</span>
+                  <span className="font-bold mx-1">
+                    {MIN_CONVERT_LIMIT - user.point}
+                  </span>
                   $SELFIEs
                 </div>
                 <div>to convert available</div>
@@ -66,7 +69,7 @@ const Profile = () => {
               <div className="w-40 bg-white h-4 rounded-lg relative p-[2px]">
                 <div
                   className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg -z-0"
-                  style={{ width: (156 * user.point) / 100 }}
+                  style={{ width: (156 * user.point) / MIN_CONVERT_LIMIT }}
                 ></div>
               </div>
             </>
