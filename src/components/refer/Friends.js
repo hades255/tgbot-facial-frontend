@@ -29,7 +29,7 @@ const Friends = () => {
   }, [users, userId]);
 
   return (
-    <div className="flex flex-col border rounded p-1 bg-gray-500">
+    <div className="flex flex-col border rounded p-1 bg-[#6b728040]">
       <div className="min-h-44 flex flex-col">
         <div className="flex justify-between mx-3">
           <span className="text-slate-500 text-sm">

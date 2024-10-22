@@ -12,7 +12,7 @@ const ConvertForm = ({ refreshHistory }) => {
   const dispatch = useDispatch();
   const user = useAuth();
 
-  const [input, setInput] = useState(100);
+  const [input, setInput] = useState(0);
 
   const handleInputChange = useCallback(
     ({ target: { value } }) => setInput(value),
@@ -24,14 +24,14 @@ const ConvertForm = ({ refreshHistory }) => {
   const profit = useMemo(
     () =>
       input >= 10000
-        ? 0.4
-        : input >= 5000
-        ? 0.3
-        : input >= 2000
         ? 0.2
-        : input >= 1000
+        : input >= 5000
         ? 0.1
-        : 0.05,
+        : input >= 2000
+        ? 0.05
+        : input >= 1500
+        ? 0.04
+        : 0.01,
     [input]
   );
 
@@ -100,7 +100,7 @@ const ConvertForm = ({ refreshHistory }) => {
             disabled={user.point < 100}
             type="number"
             step={100}
-            min={100}
+            min={1000}
             className="w-full py-1 ps-4 pe-10 rounded"
             name="convert"
             value={input}

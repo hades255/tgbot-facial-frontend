@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../redux/authSlice";
+import Header from "../../components/header";
 
 const FaceUpload = () => {
   const navigate = useNavigate();
@@ -65,37 +66,49 @@ const FaceUpload = () => {
   }, [face, userId, dispatch, navigate]);
 
   return (
-    <div className="h-screen w-screen flex justify-center items-center px-8">
-      <div className="flex flex-col gap-2">
-        <Dropzone onDrop={onDrop}>
-          {({ getRootProps, getInputProps }) => (
-            <div {...getRootProps()}>
-              <input {...getInputProps()} />
-              {file ? (
-                <div className="relative">
-                  <img alt="face from server" src={`${BACKEND_PATH}/${file.path}`} />
-                  <div className="absolute top-0 left-0 w-full h-full animate-image-check border-t-8"></div>
-                </div>
-              ) : (
-                <p className="border p-8">
-                  Drag & drop an image here, or click to select an image
-                </p>
-              )}
+    <>
+      <Header />
+      <div className="h-[calc(100vh_-_200px)] w-screen flex justify-center items-center px-8">
+        <div className="flex flex-col gap-2">
+          <Dropzone onDrop={onDrop}>
+            {({ getRootProps, getInputProps }) => (
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                {file ? (
+                  <div className="relative">
+                    <img
+                      alt="face from server"
+                      src={`${BACKEND_PATH}/${file.path}`}
+                    />
+                    <div className="absolute top-0 left-0 w-full h-full animate-image-check border-t-8"></div>
+                  </div>
+                ) : (
+                  <p className="border p-8 text-white">
+                    Drag & drop an image here, or click to select an image
+                  </p>
+                )}
+              </div>
+            )}
+          </Dropzone>
+          <p>{message}</p>
+          <div className="flex justify-between">
+            <BackButton />
+            <div className="flex gap-2">
+              <button className="text-white underline" onClick={handleSkip}>
+                Skip
+              </button>
+              <button
+                className="text-white underline"
+                disabled={!face}
+                onClick={handleContinue}
+              >
+                Continue
+              </button>
             </div>
-          )}
-        </Dropzone>
-        <p>{message}</p>
-        <div className="flex justify-between">
-          <BackButton />
-          <div className="flex gap-2">
-            <button onClick={handleSkip}>Skip</button>
-            <button disabled={!face} onClick={handleContinue}>
-              Continue
-            </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

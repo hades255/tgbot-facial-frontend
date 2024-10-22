@@ -13,10 +13,12 @@ const StakeForm = ({ refreshHistory }) => {
 
   const [input, setInput] = useState(0);
   const [selectedOption, setSelectedOption] = useState(0);
+  const [minValue, setMinValue] = useState(2000);
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
 
   const handleSelectChange = useCallback(({ target: { value } }) => {
-    setSelectedOption(value);
+    setSelectedOption(Number(value));
+    setMinValue(Number(value) === 1 ? 20 : 2000);
     setInput(0);
   }, []);
 
@@ -31,20 +33,21 @@ const StakeForm = ({ refreshHistory }) => {
   );
 
   const handleClickMax = useCallback(() => {
-    setInput(user[selectedOption ? "token" : "point"]);
+    setInput(user[selectedOption === 1 ? "token" : "point"]);
   }, [user, selectedOption]);
 
   const profit = useMemo(() => {
+    const _input = input * (selectedOption === 1 ? 100 : 1);
     const a =
-      input >= 10000
-        ? 0.4
-        : input >= 5000
-        ? 0.3
-        : input >= 2000
-        ? 0.2
-        : input >= 1000
-        ? 0.1
-        : 0.05;
+      _input >= 10000
+        ? 0.15
+        : _input >= 5000
+        ? 0.08
+        : _input >= 4000
+        ? 0.05
+        : _input >= 3000
+        ? 0.04
+        : 0.01;
     const diff = moment(date).diff(moment(), "days");
     const b =
       diff < 1
@@ -63,12 +66,15 @@ const StakeForm = ({ refreshHistory }) => {
         ? 0.05
         : 0.01;
     return a * b;
-  }, [input, date]);
+  }, [input, date, selectedOption]);
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      if (profit === 0 || input > user[selectedOption ? "token" : "point"]) {
+      if (
+        profit === 0 ||
+        input > user[selectedOption === 1 ? "token" : "point"]
+      ) {
         dispatch(
           addToast({
             message: `Invalid valance.`,
@@ -131,7 +137,7 @@ const StakeForm = ({ refreshHistory }) => {
           <input
             type="number"
             step={1}
-            min={0}
+            min={minValue}
             className="w-full py-1 ps-4 pe-10 rounded"
             name="stake"
             value={input}
@@ -153,7 +159,10 @@ const StakeForm = ({ refreshHistory }) => {
           onChange={handleDateChange}
         />
         <div className="text-white text-sm">
-          Will get <span className="font-semibold">TOKENs</span>
+          Will get
+          <span className="ml-1 font-semibold">
+            {selectedOption === 1 ? "TOKENs" : "$SELFIEs"}
+          </span>
         </div>
         <input
           type="number"
