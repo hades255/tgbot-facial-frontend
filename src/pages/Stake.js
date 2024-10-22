@@ -25,16 +25,16 @@ const Stake = () => {
             <div className="w-32 bg-white h-4 rounded-lg relative p-[2px]">
               <div
                 className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg -z-0 text-[11px] flex justify-center items-center font-bold text-white"
-                style={{ width: (124 * (point >= 2000 ? 2000 : point)) / 2000 }}
+                style={{ width: (124 * (point >= 50 ? 50 : point)) / 50 }}
               >
-                {point >= 2000 && "Stake Available"}
+                {point >= 50 && "Stake Available"}
               </div>
-              {point < 2000 && (
+              {point < 50 && (
                 <div
                   className="w-full h-full text-[11px] flex justify-start items-center font-bold text-gray-400 text-nowrap overflow-hidden"
-                  style={{ paddingLeft: (124 * point) / 2000 }}
+                  style={{ paddingLeft: (124 * point) / 50 }}
                 >
-                  {2000 - point} $SELFIEs Needed
+                  {50 - point} $SELFIEs Needed
                 </div>
               )}
             </div>
@@ -47,16 +47,16 @@ const Stake = () => {
             <div className="w-32 bg-white h-4 rounded-lg relative p-[2px]">
               <div
                 className="absolute left-[2px] top-[2px] h-3 bg-progress-bar rounded-lg -z-0 text-[11px] flex justify-center items-center font-bold text-white"
-                style={{ width: (124 * (token >= 20 ? 20 : token)) / 20 }}
+                style={{ width: (124 * (token >= 2 ? 2 : token)) / 2 }}
               >
-                {token >= 20 && "Stake Available"}
+                {token >= 2 && "Stake Available"}
               </div>
-              {token < 20 && (
+              {token < 2 && (
                 <div
                   className="w-full h-full text-[11px] flex justify-start items-center font-bold text-gray-400 text-nowrap overflow-hidden"
-                  style={{ paddingLeft: (124 * token) / 20 }}
+                  style={{ paddingLeft: (124 * token) / 2 }}
                 >
-                  {20 - token} TOKENs Needed
+                  {2 - token} TOKENs Needed
                 </div>
               )}
             </div>
