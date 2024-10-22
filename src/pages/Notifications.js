@@ -27,7 +27,7 @@ const Notifications = () => {
 
   return (
     <>
-      <div className="p-8 flex flex-col gap-2">
+      <div className="p-8 py-24 flex flex-col gap-2">
         {notifications.length > 0 &&
           notifications.map((item, index) => (
             <NotificationItem noti={item} key={index} />
@@ -49,7 +49,7 @@ const NotificationItem = ({ noti }) => {
   return (
     <div
       className={classNames(
-        "flex justify-between shadow-lg rounded-lg px-4 pt-2 pb-24 items-end",
+        "flex justify-between shadow-lg rounded-lg px-4 py-2 items-end",
         {
           "bg-notify-item": noti.status === 1,
           "bg-notify-new-item": noti.status === 0,
