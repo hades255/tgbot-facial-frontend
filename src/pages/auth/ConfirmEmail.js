@@ -51,32 +51,40 @@ const ConfirmEmail = () => {
     if (!confirmemail) navigate("/");
   }, [confirmemail, navigate]);
 
-  const handleSendagain = useCallback(() => {
+  const handleSendagain = useCallback(async () => {
+    await axios.post(`${BACKEND_PATH}/user/email?userId=${userId}`, {
+      email: confirmemail,
+    });
     setCount(120);
     setReload(false);
-  }, []);
+  }, [confirmemail, userId]);
 
   const handleSignin = useCallback(() => {
     if (input.a && input.b && input.c && input.d) {
       (async () => {
         try {
-          // await axios.post(`${BACKEND_PATH}/user/confirmemail?userId=${userId}`, {
-          //   email: confirmemail,
-          //   code: input.a + input.b + input.c + input.d,
-          // });
-          dispatch(
-            addToast({
-              message: `Welcome ${confirmemail}!`,
-              type: "info",
-            })
+          const response = await axios.post(
+            `${BACKEND_PATH}/user/confirmemail?userId=${userId}`,
+            {
+              email: confirmemail,
+              code: input.a + input.b + input.c + input.d,
+            }
           );
-          dispatch(
-            updateUser([
-              { key: "email", value: confirmemail },
-              { key: "isAuthenticated", value: true },
-            ])
-          );
-          navigate("/face-upload");
+          if (response.data.msg === "ok") {
+            dispatch(
+              updateUser([
+                { key: "email", value: confirmemail },
+                { key: "isAuthenticated", value: true },
+              ])
+            );
+            dispatch(
+              addToast({
+                message: `Welcome ${confirmemail}!`,
+                type: "info",
+              })
+            );
+            navigate("/face-upload");
+          }
         } catch (error) {
           console.log(error);
           dispatch(
@@ -107,7 +115,7 @@ const ConfirmEmail = () => {
         </div>
         <div className="flex justify-center gap-2">
           <input
-            className="border w-10 rounded px-3"
+            className="border w-10 rounded px-3 bg-transparent text-white"
             maxLength={1}
             disabled={reload}
             ref={inputa}
@@ -116,7 +124,7 @@ const ConfirmEmail = () => {
             onChange={handleInputChange}
           />
           <input
-            className="border w-10 rounded px-3"
+            className="border w-10 rounded px-3 bg-transparent text-white"
             maxLength={1}
             disabled={reload}
             ref={inputb}
@@ -125,7 +133,7 @@ const ConfirmEmail = () => {
             onChange={handleInputChange}
           />
           <input
-            className="border w-10 rounded px-3"
+            className="border w-10 rounded px-3 bg-transparent text-white"
             maxLength={1}
             disabled={reload}
             ref={inputc}
@@ -134,7 +142,7 @@ const ConfirmEmail = () => {
             onChange={handleInputChange}
           />
           <input
-            className="border w-10 rounded px-3"
+            className="border w-10 rounded px-3 bg-transparent text-white"
             maxLength={1}
             disabled={reload}
             ref={inputd}

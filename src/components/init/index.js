@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-import { login, selectIsAuthenticated } from "../../redux/authSlice";
+import { login } from "../../redux/authSlice";
 import { BACKEND_PATH } from "../../constants/config";
 import { queryStringToObject } from "../../helper/func";
 import NewNotificationTimer from "./NewNotificationTimer";
@@ -11,7 +11,7 @@ import NewNotificationTimer from "./NewNotificationTimer";
 const Init = ({ params }) => {
   const location = useLocation();
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const confirmemail = useSelector((state) => state.auth.confirmemail);
 
   const queryParams = useMemo(
     () => new URLSearchParams(location.search),
@@ -21,7 +21,7 @@ const Init = ({ params }) => {
   const params_ = useMemo(() => queryStringToObject(params), [params]);
 
   useEffect(() => {
-    if (isAuthenticated || !params || !params_.user) return;
+    if (confirmemail || !params || !params_.user) return;
     const userId = params_.user.id;
     const username = params_.user.username;
     const name = params_.user.first_name + " " + params_.user.last_name;
@@ -44,7 +44,7 @@ const Init = ({ params }) => {
         }
       })();
     }
-  }, [queryParams, params, params_, dispatch, isAuthenticated]);
+  }, [queryParams, params, params_, dispatch, confirmemail]);
 
   return (
     <>
