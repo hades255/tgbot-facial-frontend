@@ -10,7 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  background-color: #1f435185;
+  background-color: #0a182f;
   background-image: linear-gradient(to bottom, #27505b, #0a182f);
   /* background-image: radial-gradient(circle at 10% 20%, #1f435185 42%, #07172E 93.6%); */
   /* background-image: radial-gradient(
@@ -31,6 +31,7 @@ code {
 }
 
 .bg-init-loading {
+  background-color: #0a182f;
   background-image: url("assets/images/init-loading.png");
   background-size: cover;
   background-position: bottom;

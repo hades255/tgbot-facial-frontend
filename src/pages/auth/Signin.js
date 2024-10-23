@@ -32,9 +32,9 @@ const Signin = () => {
       // }
       (async () => {
         try {
-          // await axios.post(`${BACKEND_PATH}/user/email?userId=${userId}`, {
-          //   email: email_,
-          // });
+          await axios.post(`${BACKEND_PATH}/user/email?userId=${userId}`, {
+            email: email_,
+          });
           dispatch(updateUser([{ key: "confirmemail", value: email_ }]));
           dispatch(
             addToast({
