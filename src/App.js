@@ -78,7 +78,7 @@ const InitLoading = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setHide(true);
-    }, 1500);
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
 

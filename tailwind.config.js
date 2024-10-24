@@ -12,8 +12,8 @@ module.exports = {
       },
       keyframes: {
         "image-check": {
-          "0%, 100%": { transform: "translate(0)", opacity: 0.1 },
-          "50%": { transform: "translateY(100%)", opacity: 0.1 },
+          "0%, 100%": { transform: "translateY(4px)", opacity: 0.3 },
+          "50%": { transform: "translateY(284px)", opacity: 0.3 },
         },
         toastIn: {
           "0%": { opacity: 0 },
